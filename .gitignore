@@ -3,5 +3,6 @@ __pycache__/
 *.wav
 .env
 data/chroma
+data/models
 deundeun.db
 backups/
