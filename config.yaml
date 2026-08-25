@@ -1,0 +1,19 @@
+# 든든콜 설정값 — 여기 있는 숫자를 코드에 직접 박지 마라 (CLAUDE.md 참고)
+# 아래 값은 실측값으로 기획서에 실려 제출됨. 바꾸려면 사람에게 먼저 물어라.
+
+exposure:
+  enter: 70          # 위험 진입 임계
+  exit: 55           # 해제 임계 (히스테리시스)
+  boost_high: 45     # 언어 top/high 가산
+  boost_mid: 20      # 언어 mid 가산
+  sustain_s: 10      # 지속 조건 (초)
+  yellow: 50         # 노랑 표시 기준
+  cooldown_s: 30     # 알림 간격 (8/25 확정)
+  ewma_alpha: 0.3    # 평활 계수. 첫 유효 점수로 초기화(warm start)
+
+rag:
+  tau: 0.568         # 이보다 낮으면 LLM 미호출
+
+acoustic:
+  win_s: 5.0         # 8/8 실측과 같은 창
+  hop_s: 1.0         # 홉
