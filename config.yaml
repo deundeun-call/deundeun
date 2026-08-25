@@ -12,7 +12,14 @@ exposure:
   ewma_alpha: 0.3    # 평활 계수. 첫 유효 점수로 초기화(warm start)
 
 rag:
-  tau: 0.568         # 이보다 낮으면 LLM 미호출
+  tau: 0.568                       # 이보다 낮으면 LLM 미호출
+  chunk_size: 300                  # 조각 목표 길이 (자)
+  chunk_tolerance: 100             # 위 길이 ±허용치 — 이 안에서 문장 경계를 찾아 자른다
+  chunk_overlap: 50                # 다음 조각과 겹치는 길이 (자)
+  embed_model: BAAI/bge-m3         # ingest.py·search.py가 함께 읽는 임베딩 모델 이름
+  embed_model_dir: data/models/bge-m3   # 최초 다운로드 후 저장되는 로컬 경로 (행사장 오프라인 대비)
+  persist_dir: data/chroma         # chromadb PersistentClient 경로
+  collection: deundeun             # chromadb 컬렉션 이름
 
 acoustic:
   win_s: 5.0         # 8/8 실측과 같은 창
