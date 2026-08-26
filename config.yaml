@@ -41,3 +41,21 @@ stt:
   model: small                       # faster-whisper 모델 크기
   compute_type: int8                 # CPU에서 도는 양자화
   download_root: data/models/whisper # 최초 다운로드 후 저장되는 로컬 경로
+
+pipeline:
+  ring_buffer_s: 20        # risk.event와 함께 저장하는 고객 채널 최근 오디오 길이
+  silence_timeout_s: 120   # 양 채널 모두 이만큼 무발화면 통화를 자동 종료한다
+
+# scenarios.{시나리오}.customer_key — data/audio/merged/{시나리오}.wav 의 stem과 이름을 맞춘다.
+# 값은 고객 전화번호(평문)이고, pipeline.py가 db.hmac_key()로 해시해서 calls.customer_key에 저장한다.
+scenarios:
+  call1:
+    customer_key: "010-0000-0001"
+  call2:
+    customer_key: "010-0000-0002"
+  call3:
+    customer_key: "010-0000-0003"   # server/db.py seed_demo()의 seed-call3와 같은 고객 — prev_summary 데모용
+  hard1:
+    customer_key: "010-0000-0004"
+  hard2:
+    customer_key: "010-0000-0005"
