@@ -24,3 +24,20 @@ rag:
 acoustic:
   win_s: 5.0         # 8/8 실측과 같은 창
   hop_s: 1.0         # 홉
+
+audio:
+  sample_rate: 16000    # 통화 wav 기준 샘플레이트 — 다르면 pacer가 리샘플한다
+  frame_ms: 100          # pacer가 흘려보내는 프레임 길이 (ms)
+
+vad:
+  threshold: 0.5                # silero 발화 판정 임계 (0.5 = 기본값)
+  min_silence_duration_ms: 300  # 이 시간 이상 무음이면 발화 종료로 확정
+  speech_pad_ms: 30             # 발화 구간 앞뒤 패딩
+  chunk_samples: 512            # silero 윈도우 크기 (16kHz 기준 32ms) — 100ms 프레임을 이 단위로 재분할
+  max_utt_s: 8                  # 발화 최대 길이 — 넘으면 에너지 최소 지점에서 강제로 자른다
+  split_overlap_s: 0.5          # 강제로 자를 때 다음 조각과 겹치는 길이
+
+stt:
+  model: small                       # faster-whisper 모델 크기
+  compute_type: int8                 # CPU에서 도는 양자화
+  download_root: data/models/whisper # 최초 다운로드 후 저장되는 로컬 경로
