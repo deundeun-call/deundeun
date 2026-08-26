@@ -13,7 +13,7 @@ from server import pacer, stt
 from server.config import get as cfg_get
 from server.vad import ChannelVAD
 
-WAV_PATH = Path(__file__).resolve().parent.parent / "data" / "audio" / "merged" / "hard2.wav"
+WAV_PATH = Path(__file__).resolve().parent.parent / "data" / "audio" / "merged" / "call1.wav"
 
 
 async def main() -> None:
